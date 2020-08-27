@@ -15,6 +15,8 @@ class ReviewCell: UITableViewCell {
     private var textPreviewLabel = UILabel()
     private var ratingVersionLabel = UILabel()
     
+    var reviewViewModel: ReviewViewModel?
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -25,8 +27,16 @@ class ReviewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureCell(viewModel: ReviewViewModel) {
+        reviewViewModel = viewModel
+      //  reviewViewModel.delegate = self
+        self.authorLabel.text = reviewViewModel?.authorName
+        self.titleLabel.text = reviewViewModel?.reviewTitle
+        self.ratingVersionLabel.text = reviewViewModel?.ratingVersionText
+    }
+    
     func update(item: Review) {
-        ratingVersionLabel.text = item.ratingVersionText()
+      //  ratingVersionLabel.text = item.ratingVersionText()
         authorLabel.text = "from: \(item.author)"
         titleLabel.text = "\(item.title)"
         textPreviewLabel.text = "\(item.content)"

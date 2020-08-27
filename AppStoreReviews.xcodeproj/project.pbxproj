@@ -12,8 +12,14 @@
 		345AD12824C6EDDC004E2EE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 345AD12624C6EDDC004E2EE1 /* LaunchScreen.storyboard */; };
 		345AD13324C6EE64004E2EE1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */; };
 		345AD13424C6EE64004E2EE1 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AD13024C6EE64004E2EE1 /* ReviewCell.swift */; };
-		345AD13524C6EE64004E2EE1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AD13124C6EE64004E2EE1 /* Review.swift */; };
 		345AD13624C6EE64004E2EE1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */; };
+		DF9164C724F7E3D00006F1DF /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164C624F7E3D00006F1DF /* Feed.swift */; };
+		DF9164CA24F7E8D70006F1DF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164C924F7E8D70006F1DF /* APIService.swift */; };
+		DF9164CD24F8185C0006F1DF /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */; };
+		DF9164CF24F819AE0006F1DF /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164CE24F819AE0006F1DF /* ReviewViewModel.swift */; };
+		DF9164D224F81E680006F1DF /* UIViewController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D124F81E680006F1DF /* UIViewController+Util.swift */; };
+		DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D324F81E900006F1DF /* NSObject+Util.swift */; };
+		DF9164D724F822980006F1DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D624F822980006F1DF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +30,14 @@
 		345AD12924C6EDDC004E2EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		345AD13024C6EE64004E2EE1 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
-		345AD13124C6EE64004E2EE1 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		DF9164C624F7E3D00006F1DF /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		DF9164C924F7E8D70006F1DF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		DF9164CE24F819AE0006F1DF /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		DF9164D124F81E680006F1DF /* UIViewController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Util.swift"; sourceTree = "<group>"; };
+		DF9164D324F81E900006F1DF /* NSObject+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Util.swift"; sourceTree = "<group>"; };
+		DF9164D624F822980006F1DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +70,70 @@
 		345AD11A24C6EDD9004E2EE1 /* AppStoreReviews */ = {
 			isa = PBXGroup;
 			children = (
-				345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */,
-				345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */,
-				345AD13124C6EE64004E2EE1 /* Review.swift */,
-				345AD13024C6EE64004E2EE1 /* ReviewCell.swift */,
+				DF9164D824F823DA0006F1DF /* Views */,
+				DF9164D524F822860006F1DF /* Constants */,
+				DF9164D024F81E530006F1DF /* Extensions */,
+				DF9164CB24F8183E0006F1DF /* View Models */,
+				DF9164C824F7E8C40006F1DF /* Helpers */,
+				DF9164C524F7E3BE0006F1DF /* Models */,
 				345AD11B24C6EDD9004E2EE1 /* AppDelegate.swift */,
 				345AD12424C6EDDC004E2EE1 /* Assets.xcassets */,
 				345AD12624C6EDDC004E2EE1 /* LaunchScreen.storyboard */,
 				345AD12924C6EDDC004E2EE1 /* Info.plist */,
 			);
 			path = AppStoreReviews;
+			sourceTree = "<group>";
+		};
+		DF9164C524F7E3BE0006F1DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DF9164C624F7E3D00006F1DF /* Feed.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DF9164C824F7E8C40006F1DF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DF9164C924F7E8D70006F1DF /* APIService.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DF9164CB24F8183E0006F1DF /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */,
+				DF9164CE24F819AE0006F1DF /* ReviewViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		DF9164D024F81E530006F1DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF9164D124F81E680006F1DF /* UIViewController+Util.swift */,
+				DF9164D324F81E900006F1DF /* NSObject+Util.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DF9164D524F822860006F1DF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				DF9164D624F822980006F1DF /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		DF9164D824F823DA0006F1DF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */,
+				345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */,
+				345AD13024C6EE64004E2EE1 /* ReviewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,10 +206,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				345AD13524C6EE64004E2EE1 /* Review.swift in Sources */,
+				DF9164CD24F8185C0006F1DF /* FeedViewModel.swift in Sources */,
+				DF9164D724F822980006F1DF /* Constants.swift in Sources */,
+				DF9164CA24F7E8D70006F1DF /* APIService.swift in Sources */,
+				DF9164C724F7E3D00006F1DF /* Feed.swift in Sources */,
 				345AD13424C6EE64004E2EE1 /* ReviewCell.swift in Sources */,
 				345AD13324C6EE64004E2EE1 /* FeedViewController.swift in Sources */,
+				DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */,
 				345AD11C24C6EDD9004E2EE1 /* AppDelegate.swift in Sources */,
+				DF9164D224F81E680006F1DF /* UIViewController+Util.swift in Sources */,
+				DF9164CF24F819AE0006F1DF /* ReviewViewModel.swift in Sources */,
 				345AD13624C6EE64004E2EE1 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
