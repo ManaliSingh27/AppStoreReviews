@@ -21,15 +21,20 @@ class ReviewViewModel: NSObject {
     }
     
     var reviewTitle: String {
-        return self.review.title ?? ""
+        return self.review.title?.titleText ?? ""
+    }
+    
+    var reviewContent: String {
+        return self.review.content?.contentText ?? ""
     }
     
     var ratingVersionText: String {
-        let rating = Int(self.review.rating!)
+        let rating = Int((self.review.rating?.ratingValue!)!)
+        let version = self.review.version!
         var stars = ""
         for _ in 0..<rating! {
                     stars += "⭐️"
                 }
-        return "\(stars) (ver: \(String(describing: self.review.version!)))"
+        return "\(stars) (ver: \(version.verionNumber ?? ""))"
     }
 }

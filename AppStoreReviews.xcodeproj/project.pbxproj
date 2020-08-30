@@ -13,6 +13,11 @@
 		345AD13324C6EE64004E2EE1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */; };
 		345AD13424C6EE64004E2EE1 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AD13024C6EE64004E2EE1 /* ReviewCell.swift */; };
 		345AD13624C6EE64004E2EE1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */; };
+		DF600F0624F82A1500B613DC /* AppStoreReviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF600F0524F82A1500B613DC /* AppStoreReviewsTests.swift */; };
+		DF600F0E24F82A6600B613DC /* Reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = DF600F0D24F82A6600B613DC /* Reviews.json */; };
+		DF600F1024F82AC400B613DC /* ReviewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF600F0F24F82AC400B613DC /* ReviewModelTests.swift */; };
+		DF600F1224F8493B00B613DC /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF600F1124F8493B00B613DC /* FilterViewController.swift */; };
+		DF600F1424F8508900B613DC /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF600F1324F8508900B613DC /* FilterCell.swift */; };
 		DF9164C724F7E3D00006F1DF /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164C624F7E3D00006F1DF /* Feed.swift */; };
 		DF9164CA24F7E8D70006F1DF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164C924F7E8D70006F1DF /* APIService.swift */; };
 		DF9164CD24F8185C0006F1DF /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */; };
@@ -21,6 +26,16 @@
 		DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D324F81E900006F1DF /* NSObject+Util.swift */; };
 		DF9164D724F822980006F1DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D624F822980006F1DF /* Constants.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DF600F0824F82A1500B613DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 345AD11024C6EDD9004E2EE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 345AD11724C6EDD9004E2EE1;
+			remoteInfo = AppStoreReviews;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		345AD11824C6EDD9004E2EE1 /* AppStoreReviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreReviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +46,13 @@
 		345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		345AD13024C6EE64004E2EE1 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		DF600F0324F82A1500B613DC /* AppStoreReviewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreReviewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF600F0524F82A1500B613DC /* AppStoreReviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewsTests.swift; sourceTree = "<group>"; };
+		DF600F0724F82A1500B613DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF600F0D24F82A6600B613DC /* Reviews.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Reviews.json; sourceTree = "<group>"; };
+		DF600F0F24F82AC400B613DC /* ReviewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModelTests.swift; sourceTree = "<group>"; };
+		DF600F1124F8493B00B613DC /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		DF600F1324F8508900B613DC /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		DF9164C624F7E3D00006F1DF /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		DF9164C924F7E8D70006F1DF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -48,6 +70,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF600F0024F82A1500B613DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				345AD11A24C6EDD9004E2EE1 /* AppStoreReviews */,
+				DF600F0424F82A1500B613DC /* AppStoreReviewsTests */,
 				345AD11924C6EDD9004E2EE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				345AD11824C6EDD9004E2EE1 /* AppStoreReviews.app */,
+				DF600F0324F82A1500B613DC /* AppStoreReviewsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,8 +111,19 @@
 				345AD12424C6EDDC004E2EE1 /* Assets.xcassets */,
 				345AD12624C6EDDC004E2EE1 /* LaunchScreen.storyboard */,
 				345AD12924C6EDDC004E2EE1 /* Info.plist */,
+				DF600F0D24F82A6600B613DC /* Reviews.json */,
 			);
 			path = AppStoreReviews;
+			sourceTree = "<group>";
+		};
+		DF600F0424F82A1500B613DC /* AppStoreReviewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF600F0524F82A1500B613DC /* AppStoreReviewsTests.swift */,
+				DF600F0724F82A1500B613DC /* Info.plist */,
+				DF600F0F24F82AC400B613DC /* ReviewModelTests.swift */,
+			);
+			path = AppStoreReviewsTests;
 			sourceTree = "<group>";
 		};
 		DF9164C524F7E3BE0006F1DF /* Models */ = {
@@ -132,6 +174,8 @@
 				345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */,
 				345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */,
 				345AD13024C6EE64004E2EE1 /* ReviewCell.swift */,
+				DF600F1124F8493B00B613DC /* FilterViewController.swift */,
+				DF600F1324F8508900B613DC /* FilterCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,18 +200,40 @@
 			productReference = 345AD11824C6EDD9004E2EE1 /* AppStoreReviews.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DF600F0224F82A1500B613DC /* AppStoreReviewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF600F0C24F82A1500B613DC /* Build configuration list for PBXNativeTarget "AppStoreReviewsTests" */;
+			buildPhases = (
+				DF600EFF24F82A1500B613DC /* Sources */,
+				DF600F0024F82A1500B613DC /* Frameworks */,
+				DF600F0124F82A1500B613DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF600F0924F82A1500B613DC /* PBXTargetDependency */,
+			);
+			name = AppStoreReviewsTests;
+			productName = AppStoreReviewsTests;
+			productReference = DF600F0324F82A1500B613DC /* AppStoreReviewsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		345AD11024C6EDD9004E2EE1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = ING;
 				TargetAttributes = {
 					345AD11724C6EDD9004E2EE1 = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					DF600F0224F82A1500B613DC = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 345AD11724C6EDD9004E2EE1;
 					};
 				};
 			};
@@ -185,6 +251,7 @@
 			projectRoot = "";
 			targets = (
 				345AD11724C6EDD9004E2EE1 /* AppStoreReviews */,
+				DF600F0224F82A1500B613DC /* AppStoreReviewsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -194,8 +261,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF600F0E24F82A6600B613DC /* Reviews.json in Resources */,
 				345AD12824C6EDDC004E2EE1 /* LaunchScreen.storyboard in Resources */,
 				345AD12524C6EDDC004E2EE1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF600F0124F82A1500B613DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +286,9 @@
 				DF9164CA24F7E8D70006F1DF /* APIService.swift in Sources */,
 				DF9164C724F7E3D00006F1DF /* Feed.swift in Sources */,
 				345AD13424C6EE64004E2EE1 /* ReviewCell.swift in Sources */,
+				DF600F1424F8508900B613DC /* FilterCell.swift in Sources */,
 				345AD13324C6EE64004E2EE1 /* FeedViewController.swift in Sources */,
+				DF600F1224F8493B00B613DC /* FilterViewController.swift in Sources */,
 				DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */,
 				345AD11C24C6EDD9004E2EE1 /* AppDelegate.swift in Sources */,
 				DF9164D224F81E680006F1DF /* UIViewController+Util.swift in Sources */,
@@ -220,7 +297,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF600EFF24F82A1500B613DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF600F0624F82A1500B613DC /* AppStoreReviewsTests.swift in Sources */,
+				DF600F1024F82AC400B613DC /* ReviewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF600F0924F82A1500B613DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 345AD11724C6EDD9004E2EE1 /* AppStoreReviews */;
+			targetProxy = DF600F0824F82A1500B613DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		345AD12624C6EDDC004E2EE1 /* LaunchScreen.storyboard */ = {
@@ -382,6 +476,44 @@
 			};
 			name = Release;
 		};
+		DF600F0A24F82A1500B613DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AppStoreReviewsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.manali.AppStoreReviewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppStoreReviews.app/AppStoreReviews";
+			};
+			name = Debug;
+		};
+		DF600F0B24F82A1500B613DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AppStoreReviewsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.manali.AppStoreReviewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppStoreReviews.app/AppStoreReviews";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,6 +531,15 @@
 			buildConfigurations = (
 				345AD12D24C6EDDC004E2EE1 /* Debug */,
 				345AD12E24C6EDDC004E2EE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF600F0C24F82A1500B613DC /* Build configuration list for PBXNativeTarget "AppStoreReviewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF600F0A24F82A1500B613DC /* Debug */,
+				DF600F0B24F82A1500B613DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

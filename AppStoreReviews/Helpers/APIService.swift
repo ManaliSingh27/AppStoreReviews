@@ -27,8 +27,11 @@ extension CustomError: LocalizedError {
     }
 }
 
+protocol DownloadService {
+    func downloadData<T: Codable>(url: URL) -> AnyPublisher<T, Error>
+}
 
-class APIService {
+class NetworkAPIService: DownloadService {
     private var session: URLSession {
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
@@ -37,21 +40,21 @@ class APIService {
         return URLSession(configuration: config)
     }
     
-    
-    public func downloadReviews(url:URL) -> AnyPublisher<Feeds, Error>{
+    func downloadData<T: Codable>(url: URL) -> AnyPublisher<T, Error> {
         var dataPublisher: AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>
         dataPublisher = session
             .dataTaskPublisher(for: url)
             .eraseToAnyPublisher()
         return dataPublisher
             .tryMap { output in
+                
                 guard let response = output.response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
                     throw CustomError.downloadError
                 }
                 return output.data
         }
         .retry(3)
-        .decode(type: Feeds.self, decoder: JSONDecoder())
+        .decode(type: T.self, decoder: JSONDecoder())
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()
     }
@@ -63,5 +66,32 @@ class APIService {
                 .filter { $0.originalRequest?.url == url }.first?
                 .cancel()
         }
+    }
+}
+
+
+class FileDownloadService: DownloadService {
+    func downloadData<T>(url: URL) -> AnyPublisher<T, Error> where T : Decodable, T : Encodable {
+        let publisher = Just(url)
+          return  publisher.tryMap{_ in
+                let data = try Data(contentsOf: url)
+            return data
+        }
+        .decode(type: T.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
+    }
+}
+
+class APIServiceManager {
+    var serviceManager: DownloadService
+    public init(apiService: DownloadService) {
+        self.serviceManager = apiService
+    }
+    
+    func downloadReviews(url: URL) {
+       // serviceManager.downloadData(url: url).sink(receiveValue: {_ in
+            
+      //  })
     }
 }

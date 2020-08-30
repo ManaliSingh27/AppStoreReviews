@@ -10,15 +10,15 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    private let review: Review
+    private let reviewViewModel: ReviewViewModel
 
     private var titleLabel = UILabel()
     private var authorLabel = UILabel()
     private var contentLabel = UILabel()
     private var ratingVersionLabel = UILabel()
     
-    init(review: Review) {
-        self.review = review
+    init(reviewViewModel: ReviewViewModel) {
+        self.reviewViewModel = reviewViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,17 +43,17 @@ class DetailsViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(contentLabel)
 
-        ratingVersionLabel.text = review.ratingVersionText()
+        ratingVersionLabel.text = reviewViewModel.ratingVersionText
         ratingVersionLabel.font = UIFont.italicSystemFont(ofSize: 18)
 
-        authorLabel.text = review.author
+        authorLabel.text = reviewViewModel.authorName
         authorLabel.font = UIFont.systemFont(ofSize: 18)
 
-        titleLabel.text = review.title
+        titleLabel.text = reviewViewModel.reviewTitle
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.boldSystemFont(ofSize: 22)
 
-        contentLabel.text = review.content
+        contentLabel.text = reviewViewModel.reviewContent
         contentLabel.numberOfLines = 0
 
         ratingVersionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
