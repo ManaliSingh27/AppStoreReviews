@@ -10,45 +10,46 @@ import UIKit
 import Combine
 
 class FeedViewController: UITableViewController {
-    private var subscriptions = [AnyCancellable]()
     lazy var activityIndicator = UIActivityIndicatorView()
     private var feedList: [Review] = [Review]()
     private var feedViewModel: FeedViewModel!
     private var isFilterApplied = false
     private var ratingsSelected: [Int]?
+    private var filterButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView = UITableView(frame: self.tableView.frame, style: .grouped)
         tableView.register(ReviewCell.self, forCellReuseIdentifier: "cellId")
         tableView.rowHeight = 160
         
-        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.action, target: self, action: #selector(showFilter))
-        navigationItem.rightBarButtonItem = button
+        filterButton = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(showFilterView))
+        navigationItem.rightBarButtonItem = filterButton
         
         feedViewModel = FeedViewModel(delegate:self, filterDelegate:self)
-        downloadFeeds()
+        downloadFeedData()
     }
     
-    @objc private func showFilter(_ sender: UIBarButtonItem) {
+   
+    
+    @objc private func showFilterView(_ sender: UIBarButtonItem) {
+        
+        if feedViewModel.numberOfReviews(isFilterApplied: false) > 0
+               {
         let filterViewController: FilterViewController = FilterViewController()
         filterViewController.delegate = self
-        if self.ratingsSelected != nil {
-            filterViewController.ratingsSelected = self.ratingsSelected!
-        }
-        else {
-            filterViewController.ratingsSelected = [Int]()
-        }
-        filterViewController.modalPresentationStyle = .popover
+        filterViewController.ratingsSelected = self.ratingsSelected == nil ? [Int]() : self.ratingsSelected!
         
-        guard let popoverPresentationController = filterViewController.popoverPresentationController else { fatalError("Set Modal presentation style") }
+        filterViewController.modalPresentationStyle = .popover
+        guard let popoverPresentationController = filterViewController.popoverPresentationController else { return }
         popoverPresentationController.barButtonItem = sender
         filterViewController.preferredContentSize = CGSize(width: 200, height: 250)
         popoverPresentationController.delegate = self
         self.present(filterViewController, animated: true, completion: nil)
+        }
     }
     
-    
-    private func downloadFeeds() {
+    private func downloadFeedData() {
         guard currentReachabilityStatus != .notReachable else {
             self.showAlert(title:ErrorConstants.kError, message: ErrorConstants.kNoInternetError)
             return
@@ -75,9 +76,14 @@ extension FeedViewController {
         let vc = DetailsViewController(reviewViewModel: feedViewModel.reviewAtIndex(index: indexPath.row, isFilterApplied: isFilterApplied))
         navigationController!.pushViewController(vc, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = HeaderView(frame: CGRect.zero)
+        headerView.showTopOccuringWords(viewModel: feedViewModel)
+        return headerView
+    }
 }
 
-// MARK: - News View Model delegates
 extension FeedViewController: ReviewsDownloadedDelegate {
     func reviewsDownloadedWithSuccess() {
         DispatchQueue.main.async {
@@ -110,7 +116,6 @@ extension FeedViewController: UIPopoverPresentationControllerDelegate{
     
     //UIPopoverPresentationControllerDelegate
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        
     }
     
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
@@ -119,9 +124,10 @@ extension FeedViewController: UIPopoverPresentationControllerDelegate{
 }
 
 extension FeedViewController: FilterViewControllerDelegate {
-    func childViewControllerResponse(ratingsselected: [Int]) {
+    func showFilteredReviews(for ratingsselected: [Int]) {
         self.ratingsSelected = ratingsselected
         isFilterApplied = ratingsselected.isEmpty ? false : true
+        filterButton.image = isFilterApplied ? UIImage(named: "filter-selected") : UIImage(named: "filter")
         feedViewModel.filterReviews(ratingsSelected: ratingsselected)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 protocol FilterViewControllerDelegate
 {
-    func childViewControllerResponse(ratingsselected: [Int])
+    func showFilteredReviews(for ratingsselected: [Int])
 }
 
 class FilterViewController: UITableViewController {
@@ -47,20 +47,20 @@ extension FilterViewController {
             ratingsSelected!.removeAll{$0 == indexPath.row + 1}
             
         }
-        self.delegate?.childViewControllerResponse(ratingsselected: ratingsSelected!)
+        self.delegate?.showFilteredReviews(for: ratingsSelected!)
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if ratingsSelected!.contains(indexPath.row + 1) {
             ratingsSelected!.removeAll{$0 == indexPath.row + 1}
         }
-        self.delegate?.childViewControllerResponse(ratingsselected: ratingsSelected!)
+        self.delegate?.showFilteredReviews(for: ratingsSelected!)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (ratingsSelected?.contains(indexPath.row + 1))! {
             cell.setSelected(true, animated: false)
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)  // required, as noted below
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none) 
         }
     }
     

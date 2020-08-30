@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Constants {
+    static let kNumberOfTopOccuringWords: Int = 3
+}
+
 struct ErrorConstants {
     static let kParsingFailedError: String = "There seems to be some issue. Please try again later"
     static let kError: String = "Error"
@@ -15,3 +19,5 @@ struct ErrorConstants {
     static let kErrorAPIResponse: String = "There seems to be some issue. Please try again later"
     static let kErrorAPINoData: String = "There is no data to show"
 }
+
+

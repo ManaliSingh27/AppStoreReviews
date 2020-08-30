@@ -23,19 +23,16 @@ protocol ReviewsFilteredDelegate: class {
 class FeedViewModel: NSObject {
     weak var delegate: ReviewsDownloadedDelegate!
     weak var filterDelegate: ReviewsFilteredDelegate!
-    
     private var subscriptions = [AnyCancellable]()
     private var apiService: DownloadService?
     private var reviews: [Review] {
         didSet {
-            self.seperateWords(reviews: self.reviews)
-
             self.delegate?.reviewsDownloadedWithSuccess()
         }
     }
     private var filteredReviews: [Review] {
         didSet {
-
+            
             self.filterDelegate?.reviewsFilteredWithSuccess()
         }
     }
@@ -47,17 +44,16 @@ class FeedViewModel: NSObject {
         self.filterDelegate = filterDelegate
     }
     
-    // Downloads News Data and Parse the Response
     func downloadReviews()
     {
+        apiService = NetworkAPIService()
+        let manager = APIServiceManager(apiService: apiService!)
+        let url = URL(string: "https://itunes.apple.com/nl/rss/customerreviews/id=474495017/sortby=mostrecent/json")
         
-       // let url = URL(string: "https://itunes.apple.com/nl/rss/customerreviews/id=474495017/sortby=mostrecent/json")
-        apiService = FileDownloadService()
-        
-        let path = Bundle.main.path(forResource: "Reviews", ofType: "json")
-        //
-        let url = URL(fileURLWithPath: path!)
-        apiService?.downloadData(url: url)
+        guard url != nil else {
+            return
+        }
+        manager.downloadReviews(url: url!)
             .sink(receiveCompletion: {completion in
                 switch(completion){
                 case .failure(let error):
@@ -67,10 +63,9 @@ class FeedViewModel: NSObject {
                 }
             }, receiveValue: {value in
                 self.reviews = (value as Feeds).feed.entry
-
+                
             })
             .store(in: &subscriptions)
-        
     }
     
     
@@ -88,33 +83,15 @@ class FeedViewModel: NSObject {
             return
         }
         filteredReviews =  self.reviews.filter(){ratingsSelected.contains(Int(($0.rating?.ratingValue)!)!)}
-        self.seperateWords(reviews: filteredReviews)
     }
     
-    func seperateWords(reviews: [Review]) {
-        
-        let allWords = reviews.compactMap{$0.content?.contentText?.components(separatedBy: CharacterSet.whitespacesAndNewlines)}
-        let combinedWords = allWords.flatMap{$0}
-        let filteredWords = combinedWords.filter{$0.count > 3}
-        print(filteredWords)
-        
-        self.findMostOccuringWords(words: filteredWords)
-        
-    }
-    
-    func findMostOccuringWords(words: [String]) {
-        var dict = [String: Int]()
-        for item in words {
-            if dict[item] == nil {
-                dict[item] = 1
-            } else {
-                dict[item]! += 1
-            }
+    func findMostCommonOccuringWords() -> [String] {
+        var userReviews: [Review] = reviews
+        if !filteredReviews.isEmpty {
+            userReviews = filteredReviews
         }
-       // let result = dict.sorted { $0.value > $1.value }.map { $0.key }
-        let result = dict.sorted { $0.value > $1.value }
-        print(result)
-        
-        
+        let filteredWords = userReviews.compactMap{$0.content?.contentText?.components(separatedBy: CharacterSet.whitespacesAndNewlines)}.flatMap{$0}
+        let sortedWords = ReviewsFilterSort().getSortedReviewsByOccurrences(items: filteredWords)
+        return Array(sortedWords.prefix(Constants.kNumberOfTopOccuringWords))
     }
 }

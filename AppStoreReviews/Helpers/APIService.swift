@@ -29,9 +29,30 @@ extension CustomError: LocalizedError {
 
 protocol DownloadService {
     func downloadData<T: Codable>(url: URL) -> AnyPublisher<T, Error>
+    
+    func download(url:URL) -> AnyPublisher<Feeds, Error>
 }
 
 class NetworkAPIService: DownloadService {
+    func download(url: URL) -> AnyPublisher<Feeds, Error> {
+        var dataPublisher: AnyPublisher<URLSession.DataTaskPublisher.Output, URLSession.DataTaskPublisher.Failure>
+        dataPublisher = session
+            .dataTaskPublisher(for: url)
+            .eraseToAnyPublisher()
+        return dataPublisher
+            .tryMap { output in
+                
+                guard let response = output.response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                    throw CustomError.downloadError
+                }
+                return output.data
+        }
+        .retry(3)
+        .decode(type: Feeds.self, decoder: JSONDecoder())
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
+    }
+    
     private var session: URLSession {
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
@@ -71,6 +92,17 @@ class NetworkAPIService: DownloadService {
 
 
 class FileDownloadService: DownloadService {
+    func download(url: URL) -> AnyPublisher<Feeds, Error> {
+        let publisher = Just(url)
+                 return  publisher.tryMap{_ in
+                       let data = try Data(contentsOf: url)
+                   return data
+               }
+               .decode(type: Feeds.self, decoder: JSONDecoder())
+                   .receive(on: DispatchQueue.main)
+               .eraseToAnyPublisher()
+    }
+    
     func downloadData<T>(url: URL) -> AnyPublisher<T, Error> where T : Decodable, T : Encodable {
         let publisher = Just(url)
           return  publisher.tryMap{_ in
@@ -89,9 +121,8 @@ class APIServiceManager {
         self.serviceManager = apiService
     }
     
-    func downloadReviews(url: URL) {
-       // serviceManager.downloadData(url: url).sink(receiveValue: {_ in
-            
-      //  })
+    func downloadReviews<T: Codable>(url: URL) -> AnyPublisher<T, Error> {
+        return serviceManager.downloadData(url:url)
+        
     }
 }
