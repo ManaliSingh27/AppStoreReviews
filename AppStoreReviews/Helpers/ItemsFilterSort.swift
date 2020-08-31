@@ -13,13 +13,14 @@ protocol ItemsSorter {
 }
 
 protocol ItemsFilter {
-    func filterItemsByLength(items: [String], length: Int) -> [String]
+    func filterItemsByLength(items: [String], moreThan length: Int) -> [String]
 }
 
 
 struct ReviewsFilterSort: ItemsSorter, ItemsFilter {
+    
     func getSortedReviewsByOccurrences<T: Hashable>(items: [T]) -> [T] {
-        let filteredItems = self.filterItemsByLength(items: items as! [String], length: 3)
+        let filteredItems = self.filterItemsByLength(items: items as! [String], moreThan: 3)
         return self.sortItemsByOccurrences(items: filteredItems) as! [T]
     }
     
@@ -32,10 +33,7 @@ struct ReviewsFilterSort: ItemsSorter, ItemsFilter {
         return result
     }
     
-    func filterItemsByLength(items: [String], length: Int) -> [String] {
+    func filterItemsByLength(items: [String], moreThan length: Int) -> [String] {
         return items.filter{$0.count > length}
     }
 }
-
-
-

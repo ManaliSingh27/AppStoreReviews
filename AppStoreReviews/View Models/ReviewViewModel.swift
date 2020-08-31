@@ -29,12 +29,19 @@ class ReviewViewModel: NSObject {
     }
     
     var ratingVersionText: String {
-        let rating = Int((self.review.rating?.ratingValue!)!)
-        let version = self.review.version!
+        let version = self.review.version
+        guard self.review.rating?.ratingValue != nil
+            else {
+                return "ver: \(version?.verionNumber ?? "")"
+        }
+        let rating = Int(self.review.rating?.ratingValue! ?? "0")
         var stars = ""
+        guard rating != nil else {
+            return "ver: \(version?.verionNumber ?? "")"
+        }
         for _ in 0..<rating! {
-                    stars += "⭐️"
-                }
-        return "\(stars) (ver: \(version.verionNumber ?? ""))"
+            stars += "⭐️"
+        }
+        return "\(stars) (ver: \(version?.verionNumber ?? ""))"
     }
 }

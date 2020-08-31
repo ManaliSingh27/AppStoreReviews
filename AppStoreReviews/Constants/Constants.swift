@@ -20,4 +20,8 @@ struct ErrorConstants {
     static let kErrorAPINoData: String = "There is no data to show"
 }
 
+struct URLConstants {
+    static let kReviewsUrl: String = "https://itunes.apple.com/nl/rss/customerreviews/id=474495017/sortby=mostrecent/json"
+}
+
 

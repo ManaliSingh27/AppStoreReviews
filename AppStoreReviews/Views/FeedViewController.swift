@@ -11,7 +11,6 @@ import Combine
 
 class FeedViewController: UITableViewController {
     lazy var activityIndicator = UIActivityIndicatorView()
-    private var feedList: [Review] = [Review]()
     private var feedViewModel: FeedViewModel!
     private var isFilterApplied = false
     private var ratingsSelected: [Int]?
@@ -19,37 +18,35 @@ class FeedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedViewModel = FeedViewModel(delegate:self, filterDelegate:self)
+        setUpViews()
+        downloadReviews()
+    }
+    
+    private func setUpViews() {
         self.tableView = UITableView(frame: self.tableView.frame, style: .grouped)
         tableView.register(ReviewCell.self, forCellReuseIdentifier: "cellId")
         tableView.rowHeight = 160
-        
         filterButton = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(showFilterView))
         navigationItem.rightBarButtonItem = filterButton
-        
-        feedViewModel = FeedViewModel(delegate:self, filterDelegate:self)
-        downloadFeedData()
     }
     
-   
-    
     @objc private func showFilterView(_ sender: UIBarButtonItem) {
-        
-        if feedViewModel.numberOfReviews(isFilterApplied: false) > 0
-               {
-        let filterViewController: FilterViewController = FilterViewController()
-        filterViewController.delegate = self
-        filterViewController.ratingsSelected = self.ratingsSelected == nil ? [Int]() : self.ratingsSelected!
-        
-        filterViewController.modalPresentationStyle = .popover
-        guard let popoverPresentationController = filterViewController.popoverPresentationController else { return }
-        popoverPresentationController.barButtonItem = sender
-        filterViewController.preferredContentSize = CGSize(width: 200, height: 250)
-        popoverPresentationController.delegate = self
-        self.present(filterViewController, animated: true, completion: nil)
+        if feedViewModel.numberOfReviews(isFilterApplied: false) > 0 {
+            let filterViewController: FilterViewController = FilterViewController()
+            filterViewController.delegate = self
+            filterViewController.ratingsSelected = self.ratingsSelected == nil ? [Int]() : self.ratingsSelected!
+            
+            filterViewController.modalPresentationStyle = .popover
+            guard let popoverPresentationController = filterViewController.popoverPresentationController else { return }
+            popoverPresentationController.barButtonItem = sender
+            filterViewController.preferredContentSize = CGSize(width: 200, height: 250)
+            popoverPresentationController.delegate = self
+            self.present(filterViewController, animated: true, completion: nil)
         }
     }
     
-    private func downloadFeedData() {
+    private func downloadReviews() {
         guard currentReachabilityStatus != .notReachable else {
             self.showAlert(title:ErrorConstants.kError, message: ErrorConstants.kNoInternetError)
             return
@@ -86,17 +83,13 @@ extension FeedViewController {
 
 extension FeedViewController: ReviewsDownloadedDelegate {
     func reviewsDownloadedWithSuccess() {
-        DispatchQueue.main.async {
-            self.removeActivityIndicator(activityIndicator: self.activityIndicator)
-            self.tableView.reloadData()
-        }
+        self.removeActivityIndicator(activityIndicator: self.activityIndicator)
+        self.tableView.reloadData()
     }
     
     func reviewsDownloadFailure(message: String) {
-        DispatchQueue.main.async {
-            self.removeActivityIndicator(activityIndicator: self.activityIndicator)
-            self.showAlert(title:ErrorConstants.kError, message: message)
-        }
+        self.removeActivityIndicator(activityIndicator: self.activityIndicator)
+        self.showAlert(title:ErrorConstants.kError, message: message)
     }
 }
 

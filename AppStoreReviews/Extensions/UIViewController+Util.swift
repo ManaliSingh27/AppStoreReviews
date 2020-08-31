@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    // MARK: - Alert Controller
-    /// Shows Alert with message and title
-    /// - parameter title: Title of Alert
-    /// - parameter message: Alert Message
     func showAlert(title: String?, message: String) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
@@ -25,9 +21,7 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    // MARK: - Activity Indicator
-    /// Shows Activity indicator
-    /// - parameter activityIndicator: activity indicator instance
+
     func showActivityIndicatory(activityIndicator: UIActivityIndicatorView) {
         self.view.addSubview(activityIndicator)
         activityIndicator.center =  CGPoint(x: UIScreen.main.bounds.size.width/2.0, y: UIScreen.main.bounds.size.height/2.0)
@@ -42,8 +36,7 @@ extension UIViewController {
         activityIndicator.startAnimating()
     }
     
-    /// Shows Activity indicator
-    /// - parameter activityIndicator: activity indicator instance
+
     func removeActivityIndicator(activityIndicator: UIActivityIndicatorView) {
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()

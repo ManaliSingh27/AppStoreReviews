@@ -19,6 +19,10 @@ protocol ReviewsFilteredDelegate: class {
     func reviewsFilteredWithSuccess()
 }
 
+protocol AppStoreReviewsDownloader {
+    func downloadAppStoreReviews()
+}
+
 
 class FeedViewModel: NSObject {
     weak var delegate: ReviewsDownloadedDelegate!
@@ -32,7 +36,6 @@ class FeedViewModel: NSObject {
     }
     private var filteredReviews: [Review] {
         didSet {
-            
             self.filterDelegate?.reviewsFilteredWithSuccess()
         }
     }
@@ -44,30 +47,9 @@ class FeedViewModel: NSObject {
         self.filterDelegate = filterDelegate
     }
     
-    func downloadReviews()
-    {
-        apiService = NetworkAPIService()
-        let manager = APIServiceManager(apiService: apiService!)
-        let url = URL(string: "https://itunes.apple.com/nl/rss/customerreviews/id=474495017/sortby=mostrecent/json")
-        
-        guard url != nil else {
-            return
-        }
-        manager.downloadReviews(url: url!)
-            .sink(receiveCompletion: {completion in
-                switch(completion){
-                case .failure(let error):
-                    self.delegate?.reviewsDownloadFailure(message: error.localizedDescription)
-                case .finished:
-                    print("finished")
-                }
-            }, receiveValue: {value in
-                self.reviews = (value as Feeds).feed.entry
-                
-            })
-            .store(in: &subscriptions)
+    func downloadReviews() {
+        self.downloadAppStoreReviews()
     }
-    
     
     func numberOfReviews(isFilterApplied: Bool) -> Int {
         return isFilterApplied ? self.filteredReviews.count : self.reviews.count
@@ -82,7 +64,7 @@ class FeedViewModel: NSObject {
             filteredReviews = [Review]()
             return
         }
-        filteredReviews =  self.reviews.filter(){ratingsSelected.contains(Int(($0.rating?.ratingValue)!)!)}
+        filteredReviews =  self.reviews.filter(){ratingsSelected.contains(Int(($0.rating?.ratingValue ?? "0")) ?? 0)}
     }
     
     func findMostCommonOccuringWords() -> [String] {
@@ -90,8 +72,32 @@ class FeedViewModel: NSObject {
         if !filteredReviews.isEmpty {
             userReviews = filteredReviews
         }
-        let filteredWords = userReviews.compactMap{$0.content?.contentText?.components(separatedBy: CharacterSet.whitespacesAndNewlines)}.flatMap{$0}
-        let sortedWords = ReviewsFilterSort().getSortedReviewsByOccurrences(items: filteredWords)
+        let wordsSeparator = ReviewWordsSeparator(reviews: userReviews)
+        let words = wordsSeparator.separateWords()
+        let sortedWords = ReviewsFilterSort().getSortedReviewsByOccurrences(items: words)
         return Array(sortedWords.prefix(Constants.kNumberOfTopOccuringWords))
+    }
+}
+
+extension FeedViewModel: AppStoreReviewsDownloader {
+    func downloadAppStoreReviews() {
+        let url = URL(string: URLConstants.kReviewsUrl)
+        guard url != nil else {
+            return
+        }
+        apiService = NetworkAPIService()
+        let manager = APIServiceManager(apiService: apiService!)
+        manager.downloadReviews(url: url!)
+            .sink(receiveCompletion: {completion in
+                switch(completion){
+                case .failure(let error):
+                    self.delegate?.reviewsDownloadFailure(message: error.localizedDescription)
+                case .finished:
+                    print("finished")
+                }
+            }, receiveValue: {value in
+                self.reviews = (value as Feeds).feed.entry
+            })
+            .store(in: &subscriptions)
     }
 }
