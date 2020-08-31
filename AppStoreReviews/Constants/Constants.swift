@@ -10,6 +10,7 @@ import Foundation
 
 struct Constants {
     static let kNumberOfTopOccuringWords: Int = 3
+    static let kMinimumWordLength: Int = 4
 }
 
 struct ErrorConstants {

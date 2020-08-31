@@ -16,13 +16,9 @@ protocol ItemsFilter {
     func filterItemsByLength(items: [String], moreThan length: Int) -> [String]
 }
 
+typealias ItemsSortFilter = ItemsFilter & ItemsSorter
 
-struct ReviewsFilterSort: ItemsSorter, ItemsFilter {
-    
-    func getSortedReviewsByOccurrences<T: Hashable>(items: [T]) -> [T] {
-        let filteredItems = self.filterItemsByLength(items: items as! [String], moreThan: 3)
-        return self.sortItemsByOccurrences(items: filteredItems) as! [T]
-    }
+struct ReviewsFilterSort: ItemsSortFilter {
     
     func sortItemsByOccurrences<T: Hashable>(items: [T]) -> [T] {
         var dict = [T: Int]()
@@ -34,6 +30,19 @@ struct ReviewsFilterSort: ItemsSorter, ItemsFilter {
     }
     
     func filterItemsByLength(items: [String], moreThan length: Int) -> [String] {
-        return items.filter{$0.count > length}
+        return items.filter{$0.count >= length}
     }
+}
+
+class FilterSortManager {
+    var filterSortManager: ItemsSortFilter
+    init(filterSortManager: ItemsSortFilter) {
+        self.filterSortManager = filterSortManager
+    }
+    
+    func sortItemsByWordOccurrences<T: Hashable>(items: [T]) -> [T]  {
+        let filteredItems = self.filterSortManager.filterItemsByLength(items: items as! [String], moreThan: Constants.kMinimumWordLength)
+        return self.filterSortManager.sortItemsByOccurrences(items: filteredItems) as! [T]
+    }
+    
 }

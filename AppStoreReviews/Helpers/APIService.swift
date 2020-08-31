@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import Combine
 
-
 enum CustomError: String, Error {
     case downloadError
 }
@@ -73,7 +72,7 @@ class FileDownloadService: DownloadService {
 
 class APIServiceManager {
     var serviceManager: DownloadService
-    public init(apiService: DownloadService) {
+    init(apiService: DownloadService) {
         self.serviceManager = apiService
     }
     

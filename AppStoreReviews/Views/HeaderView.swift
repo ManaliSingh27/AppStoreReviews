@@ -18,7 +18,7 @@ class HeaderView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func showTopOccuringWords(viewModel: FeedViewModel) {
+    func showTopOccuringWords(viewModel: HeaderViewModel) {
         let words = viewModel.findMostCommonOccuringWords()
         setupLabels(commonWords: words)
     }
@@ -41,7 +41,7 @@ class HeaderView: UIView {
             return
         }
         let titleLabel = UILabel()
-        titleLabel.text = "Top \(Constants.kNumberOfTopOccuringWords) Occuring words in Reviews"
+        titleLabel.text = "Top \(Constants.kNumberOfTopOccuringWords) Occuring Words"
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         stack.addArrangedSubview(titleLabel)

@@ -76,7 +76,8 @@ extension FeedViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = HeaderView(frame: CGRect.zero)
-        headerView.showTopOccuringWords(viewModel: feedViewModel)
+        let headerViewModel = feedViewModel.reviews(isFilterApplied: isFilterApplied)
+        headerView.showTopOccuringWords(viewModel: headerViewModel)
         return headerView
     }
 }

@@ -59,6 +59,12 @@ class FeedViewModel: NSObject {
         return isFilterApplied ? ReviewViewModel(review: self.filteredReviews[index]) : ReviewViewModel(review: self.reviews[index])
     }
     
+    func reviews(isFilterApplied: Bool) -> HeaderViewModel {
+        let userReviews = isFilterApplied ? self.filteredReviews : reviews
+        let headerViewModel = HeaderViewModel(reviews: userReviews)
+        return headerViewModel
+    }
+    
     func filterReviews(ratingsSelected: [Int]) {
         guard !ratingsSelected.isEmpty else {
             filteredReviews = [Review]()
@@ -66,28 +72,22 @@ class FeedViewModel: NSObject {
         }
         filteredReviews =  self.reviews.filter(){ratingsSelected.contains(Int(($0.rating?.ratingValue ?? "0")) ?? 0)}
     }
-    
-    func findMostCommonOccuringWords() -> [String] {
-        var userReviews: [Review] = reviews
-        if !filteredReviews.isEmpty {
-            userReviews = filteredReviews
-        }
-        let wordsSeparator = ReviewWordsSeparator(reviews: userReviews)
-        let words = wordsSeparator.separateWords()
-        let sortedWords = ReviewsFilterSort().getSortedReviewsByOccurrences(items: words)
-        return Array(sortedWords.prefix(Constants.kNumberOfTopOccuringWords))
-    }
 }
 
 extension FeedViewModel: AppStoreReviewsDownloader {
     func downloadAppStoreReviews() {
-        let url = URL(string: URLConstants.kReviewsUrl)
-        guard url != nil else {
-            return
-        }
-        apiService = NetworkAPIService()
+//        let url = URL(string: URLConstants.kReviewsUrl)
+//        guard url != nil else {
+//            return
+//        }
+//        apiService = NetworkAPIService()
+        
+        let path = Bundle.main.path(forResource: "Reviews", ofType: "json")
+        let url = URL(fileURLWithPath: path!)
+        apiService = FileDownloadService()
+        
         let manager = APIServiceManager(apiService: apiService!)
-        manager.downloadReviews(url: url!)
+        manager.downloadReviews(url: url)
             .sink(receiveCompletion: {completion in
                 switch(completion){
                 case .failure(let error):

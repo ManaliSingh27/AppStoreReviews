@@ -30,6 +30,7 @@
 		DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D324F81E900006F1DF /* NSObject+Util.swift */; };
 		DF9164D724F822980006F1DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D624F822980006F1DF /* Constants.swift */; };
 		DFF5341824FD4023003A2F9D /* ReviewsWordSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */; };
+		DFF5341C24FD8561003A2F9D /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5341B24FD8561003A2F9D /* HeaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		DF9164D324F81E900006F1DF /* NSObject+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Util.swift"; sourceTree = "<group>"; };
 		DF9164D624F822980006F1DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsWordSeparator.swift; sourceTree = "<group>"; };
+		DFF5341B24FD8561003A2F9D /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */,
 				DF9164CE24F819AE0006F1DF /* ReviewViewModel.swift */,
+				DFF5341B24FD8561003A2F9D /* HeaderViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				DF9164CF24F819AE0006F1DF /* ReviewViewModel.swift in Sources */,
 				345AD13624C6EE64004E2EE1 /* DetailsViewController.swift in Sources */,
 				DF772F4924FC171F00636AEE /* HeaderView.swift in Sources */,
+				DFF5341C24FD8561003A2F9D /* HeaderViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
