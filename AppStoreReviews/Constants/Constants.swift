@@ -11,6 +11,8 @@ import Foundation
 struct Constants {
     static let kNumberOfTopOccuringWords: Int = 3
     static let kMinimumWordLength: Int = 4
+    static let kNetworkConnected: String = "Connected"
+    static let kNetworkNotConnected: String = "Not Connected"
 }
 
 struct ErrorConstants {

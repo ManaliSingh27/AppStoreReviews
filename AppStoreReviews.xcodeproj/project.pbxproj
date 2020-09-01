@@ -27,13 +27,13 @@
 		DF9164CD24F8185C0006F1DF /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */; };
 		DF9164CF24F819AE0006F1DF /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164CE24F819AE0006F1DF /* ReviewViewModel.swift */; };
 		DF9164D224F81E680006F1DF /* UIViewController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D124F81E680006F1DF /* UIViewController+Util.swift */; };
-		DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D324F81E900006F1DF /* NSObject+Util.swift */; };
 		DF9164D724F822980006F1DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D624F822980006F1DF /* Constants.swift */; };
 		DFF4A2E124FE64100034D398 /* ReviewWordSeparatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E024FE64100034D398 /* ReviewWordSeparatorTests.swift */; };
 		DFF4A2E324FE6CC20034D398 /* ReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E224FE6CC20034D398 /* ReviewViewModelTests.swift */; };
 		DFF4A2E524FE6F5E0034D398 /* HeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E424FE6F5E0034D398 /* HeaderViewModelTests.swift */; };
 		DFF4A2E724FE710B0034D398 /* ReviewsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E624FE710B0034D398 /* ReviewsFilter.swift */; };
 		DFF4A2E924FE74810034D398 /* ReviewsFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E824FE74810034D398 /* ReviewsFilterTests.swift */; };
+		DFF4A2EB24FED40C0034D398 /* NetworkChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2EA24FED40C0034D398 /* NetworkChecker.swift */; };
 		DFF5341824FD4023003A2F9D /* ReviewsWordSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */; };
 		DFF5341C24FD8561003A2F9D /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5341B24FD8561003A2F9D /* HeaderViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -73,13 +73,13 @@
 		DF9164CC24F8185C0006F1DF /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		DF9164CE24F819AE0006F1DF /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		DF9164D124F81E680006F1DF /* UIViewController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Util.swift"; sourceTree = "<group>"; };
-		DF9164D324F81E900006F1DF /* NSObject+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Util.swift"; sourceTree = "<group>"; };
 		DF9164D624F822980006F1DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DFF4A2E024FE64100034D398 /* ReviewWordSeparatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWordSeparatorTests.swift; sourceTree = "<group>"; };
 		DFF4A2E224FE6CC20034D398 /* ReviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModelTests.swift; sourceTree = "<group>"; };
 		DFF4A2E424FE6F5E0034D398 /* HeaderViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModelTests.swift; sourceTree = "<group>"; };
 		DFF4A2E624FE710B0034D398 /* ReviewsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsFilter.swift; sourceTree = "<group>"; };
 		DFF4A2E824FE74810034D398 /* ReviewsFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsFilterTests.swift; sourceTree = "<group>"; };
+		DFF4A2EA24FED40C0034D398 /* NetworkChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChecker.swift; sourceTree = "<group>"; };
 		DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsWordSeparator.swift; sourceTree = "<group>"; };
 		DFF5341B24FD8561003A2F9D /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +169,7 @@
 				DF772F4E24FC4A2C00636AEE /* ItemsSort.swift */,
 				DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */,
 				DFF4A2E624FE710B0034D398 /* ReviewsFilter.swift */,
+				DFF4A2EA24FED40C0034D398 /* NetworkChecker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -187,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				DF9164D124F81E680006F1DF /* UIViewController+Util.swift */,
-				DF9164D324F81E900006F1DF /* NSObject+Util.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +324,7 @@
 			files = (
 				DF9164CD24F8185C0006F1DF /* FeedViewModel.swift in Sources */,
 				DF9164D724F822980006F1DF /* Constants.swift in Sources */,
+				DFF4A2EB24FED40C0034D398 /* NetworkChecker.swift in Sources */,
 				DF9164CA24F7E8D70006F1DF /* APIService.swift in Sources */,
 				DF772F4F24FC4A2C00636AEE /* ItemsSort.swift in Sources */,
 				DF9164C724F7E3D00006F1DF /* Feed.swift in Sources */,
@@ -332,7 +333,6 @@
 				DFF5341824FD4023003A2F9D /* ReviewsWordSeparator.swift in Sources */,
 				345AD13324C6EE64004E2EE1 /* FeedViewController.swift in Sources */,
 				DF600F1224F8493B00B613DC /* FilterViewController.swift in Sources */,
-				DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */,
 				DFF4A2E724FE710B0034D398 /* ReviewsFilter.swift in Sources */,
 				345AD11C24C6EDD9004E2EE1 /* AppDelegate.swift in Sources */,
 				DF9164D224F81E680006F1DF /* UIViewController+Util.swift in Sources */,
