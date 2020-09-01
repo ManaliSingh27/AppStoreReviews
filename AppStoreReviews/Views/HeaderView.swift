@@ -28,10 +28,10 @@ class HeaderView: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stack)
-        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
-        stack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
-        stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        stack.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        stack.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+        stack.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+        stack.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
         
         stack.axis = .vertical
         stack.distribution = .equalSpacing
@@ -44,6 +44,7 @@ class HeaderView: UIView {
         titleLabel.text = "Top \(Constants.kNumberOfTopOccuringWords) Occuring Words"
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        
         stack.addArrangedSubview(titleLabel)
         
         _ = commonWords.map { word in
