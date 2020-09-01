@@ -15,18 +15,34 @@ class FeedViewController: UITableViewController {
     private var isFilterApplied = false
     private var ratingsSelected: [Int]?
     private var filterButton: UIBarButtonItem!
+    private var subscriptions = [AnyCancellable]()
+    private let networkDetector = NetworkDetection()
+
+    lazy var reviewsRefreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.black
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         feedViewModel = FeedViewModel(delegate:self, filterDelegate:self)
         setUpViews()
+        let queue = DispatchQueue(label: "Monitor")
+        networkDetector.monitor.start(queue: queue)
         downloadReviews()
+
     }
     
     private func setUpViews() {
         self.tableView = UITableView(frame: self.tableView.frame, style: .grouped)
         tableView.register(ReviewCell.self, forCellReuseIdentifier: "cellId")
         tableView.rowHeight = 160
+        tableView.addSubview(self.reviewsRefreshControl)
+
         filterButton = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(showFilterView))
         navigationItem.rightBarButtonItem = filterButton
     }
@@ -47,13 +63,26 @@ class FeedViewController: UITableViewController {
     }
     
     private func downloadReviews() {
-        guard currentReachabilityStatus != .notReachable else {
-            self.showAlert(title:ErrorConstants.kError, message: ErrorConstants.kNoInternetError)
-            return
+        if networkDetector.currentStatus {
+            self.showActivityIndicatory(activityIndicator: self.activityIndicator)
+            self.feedViewModel.downloadReviews()
         }
-        self.showActivityIndicatory(activityIndicator: activityIndicator)
-        feedViewModel.downloadReviews()
+        
+        networkDetector.startNetworkMonitoring()
+            .sink(receiveValue: {value in
+                switch(value) {
+                case ConnectionStatus.kConnected.rawValue:
+                    self.showActivityIndicatory(activityIndicator: self.activityIndicator)
+                    self.feedViewModel.downloadReviews()
+                case ConnectionStatus.kNotConnected.rawValue:
+                    self.showAlert(title:ErrorConstants.kError, message: ErrorConstants.kNoInternetError)
+                default:
+                    print("not connected")
+                }
+            })
+            .store(in: &subscriptions)
     }
+    
 }
 
 extension FeedViewController {
@@ -127,5 +156,15 @@ extension FeedViewController: FilterViewControllerDelegate {
         isFilterApplied = ratingsselected.isEmpty ? false : true
         filterButton.image = isFilterApplied ? UIImage(named: "filter-selected") : UIImage(named: "filter")
         feedViewModel.filterReviews(ratingsSelected: ratingsselected)
+    }
+}
+
+extension FeedViewController {
+    @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
+        if networkDetector.currentStatus {
+            self.showActivityIndicatory(activityIndicator: self.activityIndicator)
+            self.feedViewModel.downloadReviews()
+        }
+        reviewsRefreshControl.endRefreshing()
     }
 }
