@@ -13,12 +13,12 @@ class HeaderViewModel {
     init(reviews: [Review]) {
         self.userReviews = reviews
     }
-    func findMostCommonOccuringWords() -> [String] {
+    func findMostCommonOccuringWords(count: Int) -> [String] {
         let wordsSeparator = ReviewWordsSeparator(reviews: self.userReviews)
         let words = wordsSeparator.separateWords()
         
-        let filterSortManager = FilterSortManager(filterSortManager: ReviewsFilterSort())
+        let filterSortManager = ItemsSortManager(filterSortManager: ReviewsFilterSort())
         let sortedWords = filterSortManager.sortItemsByWordOccurrences(items: words)
-        return Array(sortedWords.prefix(Constants.kNumberOfTopOccuringWords))
+        return Array(sortedWords.prefix(count))
     }
 }

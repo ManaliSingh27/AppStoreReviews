@@ -9,7 +9,7 @@
 import XCTest
 @testable import AppStoreReviews
 
-class ItemsSortTests: XCTestCase {
+class FilterSortManagerTests: XCTestCase {
     let itemsSorter = ReviewsFilterSort()
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -44,17 +44,6 @@ class ItemsSortTests: XCTestCase {
         XCTAssert(!filteredItems.contains(","))
         XCTAssert(!filteredItems.contains("on"))
 
-    }
-    
-    func testFilteredAndSortedItems() {
-        let items = ["hello", "how", "are", "you", "excited", "ready", "hello", "hello" , "ready"]
-        let sortedItems = itemsSorter.getSortedReviewsByOccurrences(items: items)
-        XCTAssertEqual(sortedItems, ["hello", "ready", "excited"])
-    }
-    
-    func testSeperateWords() {
-      //  let reviews = [Review(f)]
-        
     }
 
 }

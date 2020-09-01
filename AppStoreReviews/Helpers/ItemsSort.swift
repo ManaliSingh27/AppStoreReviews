@@ -12,11 +12,11 @@ protocol ItemsSorter {
     func sortItemsByOccurrences<T: Hashable>(items: [T]) -> [T]
 }
 
-protocol ItemsFilter {
+protocol ItemsLengthFilter {
     func filterItemsByLength(items: [String], moreThan length: Int) -> [String]
 }
 
-typealias ItemsSortFilter = ItemsFilter & ItemsSorter
+typealias ItemsSortFilter = ItemsLengthFilter & ItemsSorter
 
 struct ReviewsFilterSort: ItemsSortFilter {
     
@@ -34,15 +34,15 @@ struct ReviewsFilterSort: ItemsSortFilter {
     }
 }
 
-class FilterSortManager {
-    var filterSortManager: ItemsSortFilter
+class ItemsSortManager {
+    var sortManager: ItemsSortFilter
     init(filterSortManager: ItemsSortFilter) {
-        self.filterSortManager = filterSortManager
+        self.sortManager = filterSortManager
     }
     
     func sortItemsByWordOccurrences<T: Hashable>(items: [T]) -> [T]  {
-        let filteredItems = self.filterSortManager.filterItemsByLength(items: items as! [String], moreThan: Constants.kMinimumWordLength)
-        return self.filterSortManager.sortItemsByOccurrences(items: filteredItems) as! [T]
+        let filteredItems = self.sortManager.filterItemsByLength(items: items as! [String], moreThan: Constants.kMinimumWordLength)
+        return self.sortManager.sortItemsByOccurrences(items: filteredItems) as! [T]
     }
     
 }

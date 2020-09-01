@@ -18,8 +18,8 @@ class HeaderView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func showTopOccuringWords(viewModel: HeaderViewModel) {
-        let words = viewModel.findMostCommonOccuringWords()
+    func showTopOccuringWords(viewModel: HeaderViewModel, count: Int) {
+        let words = viewModel.findMostCommonOccuringWords(count: count)
         setupLabels(commonWords: words)
     }
     

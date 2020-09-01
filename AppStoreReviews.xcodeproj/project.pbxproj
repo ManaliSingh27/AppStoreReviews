@@ -19,8 +19,8 @@
 		DF600F1224F8493B00B613DC /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF600F1124F8493B00B613DC /* FilterViewController.swift */; };
 		DF600F1424F8508900B613DC /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF600F1324F8508900B613DC /* FilterCell.swift */; };
 		DF772F4924FC171F00636AEE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772F4824FC171F00636AEE /* HeaderView.swift */; };
-		DF772F4F24FC4A2C00636AEE /* ItemsFilterSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772F4E24FC4A2C00636AEE /* ItemsFilterSort.swift */; };
-		DF772F5124FC5EA600636AEE /* ItemsSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772F5024FC5EA600636AEE /* ItemsSortTests.swift */; };
+		DF772F4F24FC4A2C00636AEE /* ItemsSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772F4E24FC4A2C00636AEE /* ItemsSort.swift */; };
+		DF772F5124FC5EA600636AEE /* FilterSortManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772F5024FC5EA600636AEE /* FilterSortManagerTests.swift */; };
 		DF772F5324FC640A00636AEE /* FeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772F5224FC640A00636AEE /* FeedViewModelTests.swift */; };
 		DF9164C724F7E3D00006F1DF /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164C624F7E3D00006F1DF /* Feed.swift */; };
 		DF9164CA24F7E8D70006F1DF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164C924F7E8D70006F1DF /* APIService.swift */; };
@@ -29,6 +29,11 @@
 		DF9164D224F81E680006F1DF /* UIViewController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D124F81E680006F1DF /* UIViewController+Util.swift */; };
 		DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D324F81E900006F1DF /* NSObject+Util.swift */; };
 		DF9164D724F822980006F1DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9164D624F822980006F1DF /* Constants.swift */; };
+		DFF4A2E124FE64100034D398 /* ReviewWordSeparatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E024FE64100034D398 /* ReviewWordSeparatorTests.swift */; };
+		DFF4A2E324FE6CC20034D398 /* ReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E224FE6CC20034D398 /* ReviewViewModelTests.swift */; };
+		DFF4A2E524FE6F5E0034D398 /* HeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E424FE6F5E0034D398 /* HeaderViewModelTests.swift */; };
+		DFF4A2E724FE710B0034D398 /* ReviewsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E624FE710B0034D398 /* ReviewsFilter.swift */; };
+		DFF4A2E924FE74810034D398 /* ReviewsFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A2E824FE74810034D398 /* ReviewsFilterTests.swift */; };
 		DFF5341824FD4023003A2F9D /* ReviewsWordSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */; };
 		DFF5341C24FD8561003A2F9D /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5341B24FD8561003A2F9D /* HeaderViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -60,8 +65,8 @@
 		DF600F1124F8493B00B613DC /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		DF600F1324F8508900B613DC /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		DF772F4824FC171F00636AEE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		DF772F4E24FC4A2C00636AEE /* ItemsFilterSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsFilterSort.swift; sourceTree = "<group>"; };
-		DF772F5024FC5EA600636AEE /* ItemsSortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsSortTests.swift; sourceTree = "<group>"; };
+		DF772F4E24FC4A2C00636AEE /* ItemsSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsSort.swift; sourceTree = "<group>"; };
+		DF772F5024FC5EA600636AEE /* FilterSortManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSortManagerTests.swift; sourceTree = "<group>"; };
 		DF772F5224FC640A00636AEE /* FeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelTests.swift; sourceTree = "<group>"; };
 		DF9164C624F7E3D00006F1DF /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		DF9164C924F7E8D70006F1DF /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -70,6 +75,11 @@
 		DF9164D124F81E680006F1DF /* UIViewController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Util.swift"; sourceTree = "<group>"; };
 		DF9164D324F81E900006F1DF /* NSObject+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Util.swift"; sourceTree = "<group>"; };
 		DF9164D624F822980006F1DF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DFF4A2E024FE64100034D398 /* ReviewWordSeparatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWordSeparatorTests.swift; sourceTree = "<group>"; };
+		DFF4A2E224FE6CC20034D398 /* ReviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModelTests.swift; sourceTree = "<group>"; };
+		DFF4A2E424FE6F5E0034D398 /* HeaderViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModelTests.swift; sourceTree = "<group>"; };
+		DFF4A2E624FE710B0034D398 /* ReviewsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsFilter.swift; sourceTree = "<group>"; };
+		DFF4A2E824FE74810034D398 /* ReviewsFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsFilterTests.swift; sourceTree = "<group>"; };
 		DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsWordSeparator.swift; sourceTree = "<group>"; };
 		DFF5341B24FD8561003A2F9D /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,8 +123,8 @@
 		345AD11A24C6EDD9004E2EE1 /* AppStoreReviews */ = {
 			isa = PBXGroup;
 			children = (
-				DF9164D824F823DA0006F1DF /* Views */,
 				DF9164D524F822860006F1DF /* Constants */,
+				DF9164D824F823DA0006F1DF /* Views */,
 				DF9164D024F81E530006F1DF /* Extensions */,
 				DF9164CB24F8183E0006F1DF /* View Models */,
 				DF9164C824F7E8C40006F1DF /* Helpers */,
@@ -134,8 +144,12 @@
 				DF600F0524F82A1500B613DC /* AppStoreReviewsTests.swift */,
 				DF600F0724F82A1500B613DC /* Info.plist */,
 				DF600F0F24F82AC400B613DC /* ReviewModelTests.swift */,
-				DF772F5024FC5EA600636AEE /* ItemsSortTests.swift */,
+				DF772F5024FC5EA600636AEE /* FilterSortManagerTests.swift */,
 				DF772F5224FC640A00636AEE /* FeedViewModelTests.swift */,
+				DFF4A2E024FE64100034D398 /* ReviewWordSeparatorTests.swift */,
+				DFF4A2E224FE6CC20034D398 /* ReviewViewModelTests.swift */,
+				DFF4A2E424FE6F5E0034D398 /* HeaderViewModelTests.swift */,
+				DFF4A2E824FE74810034D398 /* ReviewsFilterTests.swift */,
 			);
 			path = AppStoreReviewsTests;
 			sourceTree = "<group>";
@@ -152,8 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				DF9164C924F7E8D70006F1DF /* APIService.swift */,
-				DF772F4E24FC4A2C00636AEE /* ItemsFilterSort.swift */,
+				DF772F4E24FC4A2C00636AEE /* ItemsSort.swift */,
 				DFF5341724FD4023003A2F9D /* ReviewsWordSeparator.swift */,
+				DFF4A2E624FE710B0034D398 /* ReviewsFilter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -188,14 +203,22 @@
 		DF9164D824F823DA0006F1DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */,
-				345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */,
+				DFF4A2DF24FE629A0034D398 /* View Controllers */,
 				345AD13024C6EE64004E2EE1 /* ReviewCell.swift */,
-				DF600F1124F8493B00B613DC /* FilterViewController.swift */,
 				DF600F1324F8508900B613DC /* FilterCell.swift */,
 				DF772F4824FC171F00636AEE /* HeaderView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DFF4A2DF24FE629A0034D398 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				345AD13224C6EE64004E2EE1 /* DetailsViewController.swift */,
+				345AD12F24C6EE64004E2EE1 /* FeedViewController.swift */,
+				DF600F1124F8493B00B613DC /* FilterViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +325,7 @@
 				DF9164CD24F8185C0006F1DF /* FeedViewModel.swift in Sources */,
 				DF9164D724F822980006F1DF /* Constants.swift in Sources */,
 				DF9164CA24F7E8D70006F1DF /* APIService.swift in Sources */,
-				DF772F4F24FC4A2C00636AEE /* ItemsFilterSort.swift in Sources */,
+				DF772F4F24FC4A2C00636AEE /* ItemsSort.swift in Sources */,
 				DF9164C724F7E3D00006F1DF /* Feed.swift in Sources */,
 				345AD13424C6EE64004E2EE1 /* ReviewCell.swift in Sources */,
 				DF600F1424F8508900B613DC /* FilterCell.swift in Sources */,
@@ -310,6 +333,7 @@
 				345AD13324C6EE64004E2EE1 /* FeedViewController.swift in Sources */,
 				DF600F1224F8493B00B613DC /* FilterViewController.swift in Sources */,
 				DF9164D424F81E900006F1DF /* NSObject+Util.swift in Sources */,
+				DFF4A2E724FE710B0034D398 /* ReviewsFilter.swift in Sources */,
 				345AD11C24C6EDD9004E2EE1 /* AppDelegate.swift in Sources */,
 				DF9164D224F81E680006F1DF /* UIViewController+Util.swift in Sources */,
 				DF9164CF24F819AE0006F1DF /* ReviewViewModel.swift in Sources */,
@@ -324,9 +348,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF600F0624F82A1500B613DC /* AppStoreReviewsTests.swift in Sources */,
+				DFF4A2E924FE74810034D398 /* ReviewsFilterTests.swift in Sources */,
+				DFF4A2E124FE64100034D398 /* ReviewWordSeparatorTests.swift in Sources */,
 				DF600F1024F82AC400B613DC /* ReviewModelTests.swift in Sources */,
 				DF772F5324FC640A00636AEE /* FeedViewModelTests.swift in Sources */,
-				DF772F5124FC5EA600636AEE /* ItemsSortTests.swift in Sources */,
+				DFF4A2E324FE6CC20034D398 /* ReviewViewModelTests.swift in Sources */,
+				DFF4A2E524FE6F5E0034D398 /* HeaderViewModelTests.swift in Sources */,
+				DF772F5124FC5EA600636AEE /* FilterSortManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

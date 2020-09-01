@@ -66,28 +66,21 @@ class FeedViewModel: NSObject {
     }
     
     func filterReviews(ratingsSelected: [Int]) {
-        guard !ratingsSelected.isEmpty else {
-            filteredReviews = [Review]()
-            return
-        }
-        filteredReviews =  self.reviews.filter(){ratingsSelected.contains(Int(($0.rating?.ratingValue ?? "0")) ?? 0)}
+        let reviewsFilter = ReviewsFilter(reviews: self.reviews)
+        filteredReviews = reviewsFilter.filterReviews(ratingsSelected:ratingsSelected)
     }
 }
 
 extension FeedViewModel: AppStoreReviewsDownloader {
     func downloadAppStoreReviews() {
-//        let url = URL(string: URLConstants.kReviewsUrl)
-//        guard url != nil else {
-//            return
-//        }
-//        apiService = NetworkAPIService()
-        
-        let path = Bundle.main.path(forResource: "Reviews", ofType: "json")
-        let url = URL(fileURLWithPath: path!)
-        apiService = FileDownloadService()
+        let url = URL(string: URLConstants.kReviewsUrl)
+        guard url != nil else {
+            return
+        }
+        apiService = NetworkAPIService()
         
         let manager = APIServiceManager(apiService: apiService!)
-        manager.downloadReviews(url: url)
+        manager.downloadReviews(url: url!)
             .sink(receiveCompletion: {completion in
                 switch(completion){
                 case .failure(let error):
