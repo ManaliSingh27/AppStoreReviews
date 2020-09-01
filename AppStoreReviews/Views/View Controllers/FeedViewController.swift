@@ -115,6 +115,10 @@ extension FeedViewController: UIPopoverPresentationControllerDelegate{
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
         return true
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+           return .none
+       }
 }
 
 extension FeedViewController: FilterViewControllerDelegate {
