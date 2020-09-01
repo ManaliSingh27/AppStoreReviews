@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 
-class HeaderView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+class HeaderView: UITableViewCell {
+     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+           super.init(style: style, reuseIdentifier: reuseIdentifier)
+       }
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -27,11 +28,11 @@ class HeaderView: UIView {
         
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(stack)
-        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
-        stack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
-        stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        contentView.addSubview(stack)
+        stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
+        stack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
+        stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8).isActive = true
         
         stack.axis = .vertical
         stack.distribution = .equalSpacing
