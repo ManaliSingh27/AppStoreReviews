@@ -15,6 +15,8 @@ class ReviewCell: UITableViewCell {
     private var textPreviewLabel = UILabel()
     private var ratingVersionLabel = UILabel()
     
+    var reviewViewModel: ReviewViewModel?
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -25,12 +27,14 @@ class ReviewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(item: Review) {
-        ratingVersionLabel.text = item.ratingVersionText()
-        authorLabel.text = "from: \(item.author)"
-        titleLabel.text = "\(item.title)"
-        textPreviewLabel.text = "\(item.content)"
+    func configureCell(viewModel: ReviewViewModel) {
+        reviewViewModel = viewModel
+        self.authorLabel.text = reviewViewModel?.authorName
+        self.titleLabel.text = reviewViewModel?.reviewTitle
+        self.ratingVersionLabel.text = reviewViewModel?.ratingVersionText
     }
+    
+  
     
     private func setupLabels() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
