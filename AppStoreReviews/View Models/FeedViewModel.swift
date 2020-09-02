@@ -81,10 +81,10 @@ extension FeedViewModel: AppStoreReviewsDownloader {
         
         let manager = APIServiceManager(apiService: apiService!)
         manager.downloadReviews(url: url!)
-            .sink(receiveCompletion: {completion in
+            .sink(receiveCompletion: {[weak self] completion in
                 switch(completion){
                 case .failure(let error):
-                    self.delegate?.reviewsDownloadFailure(message: error.localizedDescription)
+                    self?.delegate?.reviewsDownloadFailure(message: error.localizedDescription)
                 case .finished:
                     print("finished")
                 }

@@ -69,13 +69,13 @@ class FeedViewController: UITableViewController {
         }
         
         networkDetector.startNetworkMonitoring()
-            .sink(receiveValue: {value in
+            .sink(receiveValue: {[weak self] value in
                 switch(value) {
                 case ConnectionStatus.kConnected.rawValue:
-                    self.showActivityIndicatory(activityIndicator: self.activityIndicator)
-                    self.feedViewModel.downloadReviews()
+                    self?.showActivityIndicatory(activityIndicator: self!.activityIndicator)
+                    self?.feedViewModel.downloadReviews()
                 case ConnectionStatus.kNotConnected.rawValue:
-                    self.showAlert(title:ErrorConstants.kError, message: ErrorConstants.kNoInternetError)
+                    self?.showAlert(title:ErrorConstants.kError, message: ErrorConstants.kNoInternetError)
                 default:
                     print("not connected")
                 }
@@ -125,10 +125,8 @@ extension FeedViewController: ReviewsDownloadedDelegate {
 
 extension FeedViewController: ReviewsFilteredDelegate {
     func reviewsFilteredWithSuccess() {
-        DispatchQueue.main.async {
-            self.removeActivityIndicator(activityIndicator: self.activityIndicator)
-            self.tableView.reloadData()
-        }
+        self.removeActivityIndicator(activityIndicator: self.activityIndicator)
+        self.tableView.reloadData()
     }
 }
 
